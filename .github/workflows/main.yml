@@ -11,9 +11,19 @@ jobs:
         with:
           args: skims --strict scan ./.github/workflows/config.yaml 
         continue-on-error: true  
+      - name: Check for vulnerabilities
+        run: |
+          if grep -q "Vulnerability" ./Fluid-Attacks-Results.csv; then
+            echo "Vulnerabilities detected, failing the job"
+            exit 1
+          else
+            echo "No vulnerabilities detected"
+          fi
+
       - name: Upload scan results
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: Fluid-Attacks-Results
-          path: ./Fluid-Attacks-Results.csv    
+          path: ./Fluid-Attacks-Results.csv
 
