@@ -1,13 +1,12 @@
+# .github/workflows/dev.yml
 name: Standalone CLI
 on: [push, pull_request]
 jobs:
   machineStandalone:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@f095bcc56b7c2baf48f3ac70d6d6782f4f553222
-      
-      - name: Run Fluid Attacks CLI
+      - uses: actions/checkout@v2
+      - name: Run FluidAttacks CLI
         uses: docker://docker.io/fluidattacks/cli:latest
         with:
-          args: skims scan /dir/to/scan
+          args: skims scan .
