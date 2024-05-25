@@ -10,4 +10,9 @@ jobs:
         uses: docker://docker.io/fluidattacks/cli:latest
         with:
           args: skims --strict scan ./.github/workflows/config.yaml 
+      - name: Upload scan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Fluid-Attacks-Results
+          path: ./Fluid-Attacks-Results.csv    
 
