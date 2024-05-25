@@ -9,5 +9,5 @@ jobs:
       - name: Run FluidAttacks CLI
         uses: docker://docker.io/fluidattacks/cli:latest
         with:
-          args: skims --strict scan .
+          args: skims --strict scan ./.github/workflows/config.yaml 
 
