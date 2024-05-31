@@ -4,12 +4,14 @@ output:
   format: CSV
 working_dir: .
 language: EN
+strict: true
+file_size_limit: false    
 apk:
   include:
     - glob(**/*.apk)
 sast:
   include:
-    - .
+    - .    
   exclude:
     - glob(**/node_modules/**)
     - glob(**/test/**)
